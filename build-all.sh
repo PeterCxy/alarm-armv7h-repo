@@ -13,3 +13,10 @@ done
 # Cleanup
 paccache -c $PWD/repo -r
 docker image prune -f # This delets dangling images, i.e. old versions of the docker image
+
+# Commit and push if necessary
+if [[ ! -z $(git status -s) ]]; then
+  git add -A
+  git commit -a -m "[buildbot] Update on $(date)"
+  git push
+fi
