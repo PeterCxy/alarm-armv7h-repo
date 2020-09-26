@@ -4,9 +4,15 @@
 # always update it first
 pacman -Syu
 
-export PKGDEST=/mnt/out
-export SRCDEST=/tmp
-export SRCPKGDEST=/tmp
+# Create builder user matching the UID outside
+useradd -u $OUTSIDE_UID builder
+# Allow nopasswd sudo
+echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 cd /mnt/src
-makepkg -sci
+sudo -u builder PKGDEST=/mnt/out SRCDEST=/mnt/src_cache makepkg -sc --noconfirm
+
+rm -rf /mnt/src/src
+rm -rf /mnt/src/pkg
+
+# The container should not be used again, so don't worry about cleaning up

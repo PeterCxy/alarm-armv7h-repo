@@ -9,6 +9,7 @@ COPY ./build.sh /build.sh
 RUN chmod +x /build.sh && mkdir /mnt/src && mkdir /mnt/out
 
 VOLUME /mnt/src
+VOLUME /mnt/src_cache
 VOLUME /mnt/out
 
 CMD /build.sh
