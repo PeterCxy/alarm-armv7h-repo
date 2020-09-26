@@ -1,5 +1,5 @@
 .SRCINFO
-!repo/.keep
 repo/*
 !src/.keep
 src/*
+!src/.keep
