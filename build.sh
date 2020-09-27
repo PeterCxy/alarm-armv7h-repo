@@ -10,7 +10,7 @@ useradd -u $OUTSIDE_UID builder
 echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 cd /mnt/src
-sudo -u builder PKGDEST=/mnt/out SRCDEST=/mnt/src_cache MAKEFLAGS="-j4" BUILDDIR=/tmp/makepkg makepkg -sc --noconfirm
+sudo -u builder PKGDEST=/mnt/out SRCDEST=/mnt/src_cache MAKEFLAGS="-j$(nproc)" BUILDDIR=/tmp/makepkg makepkg -sc --noconfirm
 
 rm -rf /mnt/src/src
 rm -rf /mnt/src/pkg
