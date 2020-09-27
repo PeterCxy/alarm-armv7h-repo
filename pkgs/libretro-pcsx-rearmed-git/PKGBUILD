@@ -5,7 +5,7 @@
 
 pkgname=libretro-pcsx-rearmed-git
 pkgver=1750.2791420
-pkgrel=2
+pkgrel=4
 pkgdesc="libretro implementation of PCSX ReARMed. (PlayStation)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/libretro/pcsx_rearmed"
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make HAVE_GLES=1 -f Makefile.libretro
+  make ARCH=arm64 BUILTIN_GPU=unai HAVE_GLES=1 -f Makefile.libretro
 }
 
 package() {
