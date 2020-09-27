@@ -11,6 +11,7 @@ RUN chmod +x /build.sh && mkdir /mnt/src && mkdir /mnt/out
 VOLUME /mnt/src
 VOLUME /mnt/src_cache
 VOLUME /mnt/out
+VOLUME /mnt/repo
 VOLUME /tmp
 
 CMD /build.sh
