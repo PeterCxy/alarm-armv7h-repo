@@ -5,13 +5,13 @@
 
 pkgname=libretro-pcsx-rearmed-git
 pkgver=1750.2791420
-pkgrel=1
+pkgrel=2
 pkgdesc="libretro implementation of PCSX ReARMed. (PlayStation)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/libretro/pcsx_rearmed"
 license=('GPL')
 conflicts=('libretro-pcsx_rearmed-git')
-depends=('zlib' 'libretro-core-info')
+depends=('zlib' 'libretro-core-info' 'mesa')
 makedepends=('git')
 groups=('libretro')
 
@@ -28,9 +28,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  # detect Raspberry Pi 2 and 3
-  grep -q 'Hardware.\+BCM2835' /proc/cpuinfo && export platform=rpi2
-  make -f Makefile.libretro
+  make HAVE_GLES=1 -f Makefile.libretro
 }
 
 package() {
