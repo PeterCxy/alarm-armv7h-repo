@@ -1,8 +1,8 @@
-FROM agners/archlinuxarm-arm64v8:latest
+FROM agners/archlinuxarm-arm32v7:latest
 
 RUN echo "nameserver 1.1.1.1" > /etc/hosts
 
-RUN pacman -Syu --noconfirm && pacman -S --noconfirm base-devel git
+RUN pacman -Syu --noconfirm --ignore=filesystem && pacman -S --noconfirm base-devel git
 
 COPY ./build.sh /build.sh
 

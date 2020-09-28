@@ -16,7 +16,7 @@ docker run --rm -e OUTSIDE_UID=$UID -v /tmp/alarm-build-tmp:/mnt/out -v $PWD/pkg
 pushd ./repo
 for f in $(find /tmp/alarm-build-tmp/ -type f); do
   cp $f ./
-  repo-add petercxy-aarch64.db.tar.xz $f
+  repo-add petercxy-armv7h.db.tar.xz $f
 done
 popd
 

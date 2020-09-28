@@ -1,1 +1,0 @@
-SUBSYSTEMS=="vchiq",GROUP="video",MODE="0660"

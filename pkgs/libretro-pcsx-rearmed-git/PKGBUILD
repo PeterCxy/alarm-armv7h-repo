@@ -5,9 +5,9 @@
 
 pkgname=libretro-pcsx-rearmed-git
 pkgver=1750.2791420
-pkgrel=4
+pkgrel=1
 pkgdesc="libretro implementation of PCSX ReARMed. (PlayStation)"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/pcsx_rearmed"
 license=('GPL')
 conflicts=('libretro-pcsx_rearmed-git')
@@ -26,9 +26,16 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
+prepare() {
+  cd "${_gitname}"
+  sed -i "s/R3000Acpu/extern R3000Acpu/" libpcsxcore/r3000a.c
+  sed -i "s/psxRegisters/extern psxRegisters/" libpcsxcore/r3000a.c
+  sed -i "s/Rcnt rcnts/extern Rcnt rcnts/" libpcsxcore/psxcounters.c
+}
+
 build() {
   cd "${_gitname}"
-  make ARCH=arm64 BUILTIN_GPU=unai HAVE_GLES=1 -f Makefile.libretro
+  make platform=rpi4 -f Makefile.libretro
 }
 
 package() {
