@@ -1,0 +1,23 @@
+pkgname=python-raspberry-gpio-hg
+_pkgname=RPi.GPIO
+pkgver=r135.314568df26f8
+pkgrel=1
+pkgdesc="Python library for GPIO access on a Raspberry Pi"
+url="http://sourceforge.net/projects/raspberry-gpio-python"
+license=(MIT)
+arch=(armv6h armv7h aarch64)
+depends=(python)
+makedepends=(gcc python-distribute mercurial)
+source=("${_pkgname}::hg+http://hg.code.sf.net/p/raspberry-gpio-python/code")
+sha1sums=(SKIP)
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+}
+
+package() {
+	cd "$srcdir/$_pkgname"
+	env CFLAGS="-fcommon" python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}
+
