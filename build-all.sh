@@ -5,7 +5,7 @@
 # Set packages to build in pkgs.conf
 source ./pkgs.conf
 
-for p in $PKGS; do
+for p in ${PKGS[@]}; do
   echo "=> Building $p"
   ./build-pkg.sh $p
 done
