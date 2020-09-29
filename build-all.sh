@@ -1,4 +1,6 @@
 #!/bin/bash
+source ./hook.sh
+all_build_start
 # Update docker image first
 ./update-docker.sh
 
@@ -20,3 +22,5 @@ if [[ ! -z $(git status -s) ]]; then
   git commit -a -m "[buildbot] Update on $(date)"
   git push
 fi
+
+all_build_end

@@ -3,3 +3,4 @@ repo/*
 !src/.keep
 src/*
 !src/.keep
+hook.sh
