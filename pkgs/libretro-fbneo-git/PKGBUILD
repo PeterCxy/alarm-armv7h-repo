@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-fbneo-git
-pkgver=10450.a32924d42
+pkgver=10458.006f99729
 pkgrel=1
 pkgdesc="libretro FBNeo NEW implementation of Final Burn Alpha"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
