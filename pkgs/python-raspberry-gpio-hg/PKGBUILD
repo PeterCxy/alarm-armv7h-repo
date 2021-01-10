@@ -1,6 +1,6 @@
 pkgname=python-raspberry-gpio-hg
 _pkgname=RPi.GPIO
-pkgver=r135.314568df26f8
+pkgver=r137.8a0a65b75b39
 pkgrel=1
 pkgdesc="Python library for GPIO access on a Raspberry Pi"
 url="http://sourceforge.net/projects/raspberry-gpio-python"
